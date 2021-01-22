@@ -46,7 +46,7 @@ spielfeld = [[1,4,5,0,0,3,2,0,9],
              [1,4,5,0,0,3,2,0,9],
              [1,4,5,0,0,3,2,0,9]]
 
-# Functionsss
+# Functions
 def print_to_cli(feld):
     for x in range(9):
         if x % 3 == 0 and x != 0:
@@ -57,11 +57,62 @@ def print_to_cli(feld):
             print(str(feld[x][y])+ " ", end='')
         print("")
 
-def posibiel(feld, x, y, n):
+def finde_zeros(feld):
+    for x in range(9):
+        for y in range (9):
+            if feld[x][y] == 0:
+                return (x, y)
+
+def check_row(feld, y, n):
+    for x in range(9):
+        if feld[x][y] == n:
+            return False
+        else:
+            return True
+def check_colume(feld, x, n):
+    for y in range(9):
+        if feld[x][y] == n:
+            return False
+        else:
+            return True
+
+def check_sqear(feld, x, y, n):
+    xmin, xmax, ymin, ymax = 0
+    if x >= 0 and x <= 2:
+        xmin = 0
+        xmax = 2
+    elif x >= 3 and x <= 5:
+        xmin = 3
+        xmax = 5
+    elif x >= 6 and x <= 8:
+        xmin = 6
+        xmax = 8
+    else:
+        print("Error x value tu high")
+        return 1
+
+    if y >= 0 and y <= 2:
+        ymin = 0
+        ymax = 2
+    elif y >= 3 and y <= 5:
+        ymin = 3
+        ymax = 5
+    elif y >= 6 and y <= 8:
+        ymin = 6
+        ymax = 8
+    else:
+        print("Error y value tu high")
+        return 1
+    for x in range(xmin,xmax):
+        for y in range(ymin, ymax):
+            if feld[x][y] == n:
+                return False
+            else:
+                return True
 
 
-    return
 
 
 
 print_to_cli(spielfeld)
+print(finde_zeros(spielfeld))
