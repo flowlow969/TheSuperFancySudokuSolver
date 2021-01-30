@@ -49,8 +49,8 @@ spielfeld = [[0,0,0,0,3,0,8,0,0],
 
 # Functions
 def print_to_cli(feld):
-    print("    0 1 2   3 4 5   6 7 8")
-    print("    - - - - - - - - - - -")
+    print("  R 0 1 2   3 4 5   6 7 8")
+    print("C   - - -   - - -   - - -")
     for x in range(9):
 
         if x % 3 == 0 and x != 0:
@@ -63,6 +63,7 @@ def print_to_cli(feld):
                 print("| ", end='')
             print(str(feld[x][y])+ " ", end='')
         print("")
+    print("    - - -   - - -   - - -")
 
 
 def finde_zeros(feld):
@@ -122,10 +123,6 @@ def check_sqear(feld, x, y, n):
     else:
         print("Error y value tu high")
         return 1
-    print("xmin: " + str(xmin))
-    print("xmax: " + str(xmax))
-    print("ymin: " + str(ymin))
-    print("ymax: " + str(ymax))
 
     for x in range(xmin, xmax+1):
         for y in range(ymin, ymax+1):
@@ -135,7 +132,7 @@ def check_sqear(feld, x, y, n):
     return True
 
 def valid(feld,x,y,n):
-    if check_colume(feld,y,n) and check_row(feld,x,n) and check_sqear(feld,x,y,n):
+    if check_colume(feld,x,n) and check_row(feld,y,n) and check_sqear(feld,x,y,n):
         return True
     return False
 
@@ -160,4 +157,5 @@ def solver(feld):
 
 
 print_to_cli(spielfeld)
-print(check_sqear(spielfeld,1,4,2))
+solver(spielfeld)
+print_to_cli(spielfeld)
