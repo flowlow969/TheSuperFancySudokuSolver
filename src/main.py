@@ -32,7 +32,8 @@
 # - Modified by John Woolsey on 06/11/2020.
 #
 # Imports
-
+import pygame
+pygame.font.init()
 
 # Global Constants
 ## Spielfeld.
@@ -48,14 +49,21 @@ spielfeld = [[0,0,0,0,3,0,8,0,0],
 
 # Functions
 def print_to_cli(feld):
+    print("    0 1 2   3 4 5   6 7 8")
+    print("    - - - - - - - - - - -")
     for x in range(9):
+
         if x % 3 == 0 and x != 0:
-            print("- - - - - - - - - - -")
+            print("    - - - - - - - - - - -")
+            print(str(x) + " | ", end='')
+        else:
+            print(str(x) + " | ", end='')
         for y in range (9):
             if y % 3 == 0 and y != 0:
                 print("| ", end='')
             print(str(feld[x][y])+ " ", end='')
         print("")
+
 
 def finde_zeros(feld):
     for x in range(9):
@@ -69,14 +77,14 @@ def check_row(feld, y, n):
     for x in range(9):
         if feld[x][y] == n:
             return False
-        else:
-            return True
+    return True
+
 def check_colume(feld, x, n):
     for y in range(9):
         if feld[x][y] == n:
             return False
-        else:
-            return True
+
+    return True
 
 def check_sqear(feld, x, y, n):
     xmin = 0
@@ -86,12 +94,15 @@ def check_sqear(feld, x, y, n):
     if x >= 0 and x <= 2:
         xmin = 0
         xmax = 2
+
     elif x >= 3 and x <= 5:
         xmin = 3
         xmax = 5
+
     elif x >= 6 and x <= 8:
         xmin = 6
         xmax = 8
+
     else:
         print("Error x value tu high")
         return 1
@@ -99,27 +110,34 @@ def check_sqear(feld, x, y, n):
     if y >= 0 and y <= 2:
         ymin = 0
         ymax = 2
+
     elif y >= 3 and y <= 5:
         ymin = 3
         ymax = 5
+
     elif y >= 6 and y <= 8:
         ymin = 6
         ymax = 8
+
     else:
         print("Error y value tu high")
         return 1
-    for x in range(xmin,xmax+1):
-        for y in range(ymin, ymax):
+    print("xmin: " + str(xmin))
+    print("xmax: " + str(xmax))
+    print("ymin: " + str(ymin))
+    print("ymax: " + str(ymax))
+
+    for x in range(xmin, xmax+1):
+        for y in range(ymin, ymax+1):
             if feld[x][y] == n:
                 return False
-            else:
-                return True
+
+    return True
 
 def valid(feld,x,y,n):
-    if check_colume(feld,x,n) and check_row(feld,y,n) and check_sqear(feld,x,y,n):
+    if check_colume(feld,y,n) and check_row(feld,x,n) and check_sqear(feld,x,y,n):
         return True
-    else:
-        return False
+    return False
 
 
 def solver(feld):
@@ -142,5 +160,4 @@ def solver(feld):
 
 
 print_to_cli(spielfeld)
-solver(spielfeld)
-print_to_cli(spielfeld)
+print(check_sqear(spielfeld,1,4,2))
