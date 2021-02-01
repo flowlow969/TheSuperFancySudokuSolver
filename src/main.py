@@ -32,12 +32,12 @@
 # - Modified by John Woolsey on 06/11/2020.
 #
 # Imports
-import pygame
-pygame.font.init()
+#import pygame
+#pygame.font.init()
 
 # Global Constants
 ## Spielfeld.
-spielfeld = [[0,0,0,0,3,0,8,0,0],
+gitter = [[0,0,0,0,3,0,8,0,0],
              [9,0,3,0,7,0,2,0,5],
              [2,5,1,8,0,0,6,0,0],
              [8,0,7,0,0,0,3,0,0],
@@ -48,46 +48,46 @@ spielfeld = [[0,0,0,0,3,0,8,0,0],
              [0,0,2,3,0,7,0,8,0]]
 
 # Functions
-def print_to_cli(feld):
-    print("  R 0 1 2   3 4 5   6 7 8")
-    print("C   - - -   - - -   - - -")
-    for x in range(9):
-
-        if x % 3 == 0 and x != 0:
+def print_gitter(gi):
+    print("  C 0 1 2   3 4 5   6 7 8")
+    print("R   - - -   - - -   - - -")
+    for r in range(9):
+        if r % 3 == 0 and r != 0:
             print("    - - - - - - - - - - -")
-            print(str(x) + " | ", end='')
+            print(str(r) + " | ", end='')
         else:
-            print(str(x) + " | ", end='')
-        for y in range (9):
-            if y % 3 == 0 and y != 0:
+            print(str(r) + " | ", end='')
+        for c in range (9):
+            if c % 3 == 0 and c != 0:
                 print("| ", end='')
-            print(str(feld[x][y])+ " ", end='')
-        print("")
-    print("    - - -   - - -   - - -")
+            print(str(gi[r][c])+ " ", end='')
+        print(" ")
+    print("    - - -   - - -   - - -","\n\n")
 
 
-def finde_zeros(feld):
-    for x in range(9):
-        for y in range (9):
-            if feld[x][y] == 0:
-                return (x, y)
-            if x == 8 and y == 8:
+
+def finde_leeres_feld(gi):
+    for r in range(9):
+        for c in range (9):
+            if gi[r][c] == 0:
+                return (r, c)
+            if r == 8 and c == 8:
                 return False
 
-def check_row(feld, y, n):
+def check_row(gi, y, n):
     for x in range(9):
-        if feld[x][y] == n:
+        if gi[x][y] == n:
             return False
     return True
 
-def check_colume(feld, x, n):
+def check_column(gi, x, n):
     for y in range(9):
-        if feld[x][y] == n:
+        if gi[x][y] == n:
             return False
 
     return True
 
-def check_sqear(feld, x, y, n):
+def check_square(gi, x, y, n):
     xmin = 0
     xmax = 0
     ymin = 0
@@ -126,36 +126,36 @@ def check_sqear(feld, x, y, n):
 
     for x in range(xmin, xmax+1):
         for y in range(ymin, ymax+1):
-            if feld[x][y] == n:
+            if gi[x][y] == n:
                 return False
 
     return True
 
-def valid(feld,x,y,n):
-    if check_colume(feld,x,n) and check_row(feld,y,n) and check_sqear(feld,x,y,n):
+def pruefe_ziffer(gi,x,y,n):
+    if check_column(gi,x,n) and check_row(gi,y,n) and check_square(gi,x,y,n):
         return True
     return False
 
 
-def solver(feld):
-    find = finde_zeros(feld)
+def loese_sudoku(gi):
+    find = finde_leeres_feld(gi)
     if not find:
         return True
     else:
         x, y = find
 
     for n in range(1,10):
-        if valid(feld, x, y, n):
-            feld[x][y] = n
+        if pruefe_ziffer(gi, x, y, n):
+            gi[x][y] = n
 
-            if solver(feld):
+            if loese_sudoku(gi):
                 return True
 
-            feld[x][y] = 0
+            gi[x][y] = 0
 
     return False
 
 
-print_to_cli(spielfeld)
-solver(spielfeld)
-print_to_cli(spielfeld)
+print_gitter(gitter)
+loese_sudoku(gitter)
+print_gitter(gitter)
