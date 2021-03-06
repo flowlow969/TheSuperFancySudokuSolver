@@ -169,33 +169,43 @@ while run:
                         if event.key == pygame.K_0:
                             key = 0
                             activFlag = 0
+                            feld.active = False
                         if event.key == pygame.K_1:
                             key = 1
                             activFlag = 0
+                            feld.active = False
                         if event.key == pygame.K_2:
                             key = 2
                             activFlag = 0
+                            feld.active = False
                         if event.key == pygame.K_3:
                             key = 3
                             activFlag = 0
+                            feld.active = False
                         if event.key == pygame.K_4:
                             key = 4
                             activFlag = 0
+                            feld.active = False
                         if event.key == pygame.K_5:
                             key = 5
                             activFlag = 0
+                            feld.active = False
                         if event.key == pygame.K_6:
                             key = 6
                             activFlag = 0
+                            feld.active = False
                         if event.key == pygame.K_7:
                             key = 7
                             activFlag = 0
+                            feld.active = False
                         if event.key == pygame.K_8:
                             key = 8
                             activFlag = 0
+                            feld.active = False
                         if event.key == pygame.K_9:
                             key = 9
                             activFlag = 0
+                            feld.active = False
                         if event.key == pygame.K_DELETE:
                             key = None
                         feld.value = key
