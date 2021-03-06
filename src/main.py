@@ -1,512 +1,215 @@
+import pygame, sys
 import sudoku_solver as ss
-from tkinter import *
-
-
-# Die folgende Funktion soll ausgeführt werden, wenn
-# der Benutzer den Button Klick me anklickt
-
-def button_action():
-    gitter = [[int(ein1_1.get()), int(ein1_2.get()), int(ein1_3.get()), int(ein1_4.get()), int(ein1_5.get()), int(ein1_6.get()), int(ein1_7.get()), int(ein1_8.get()), int(ein1_9.get())],[int(ein2_1.get()), int(ein2_2.get()), int(ein2_3.get()), int(ein2_4.get()), int(ein2_5.get()), int(ein2_6.get()), int(ein2_7.get()), int(ein2_8.get()), int(ein2_9.get())],[int(ein3_1.get()), int(ein3_2.get()), int(ein3_3.get()), int(ein3_4.get()), int(ein3_5.get()), int(ein3_6.get()), int(ein3_7.get()), int(ein3_8.get()), int(ein3_9.get())],[int(ein4_1.get()), int(ein4_2.get()), int(ein4_3.get()), int(ein4_4.get()), int(ein4_5.get()), int(ein4_6.get()), int(ein4_7.get()), int(ein4_8.get()), int(ein4_9.get())],[int(ein5_1.get()), int(ein5_2.get()), int(ein5_3.get()), int(ein5_4.get()), int(ein5_5.get()), int(ein5_6.get()), int(ein5_7.get()), int(ein5_8.get()), int(ein5_9.get())],[int(ein6_1.get()), int(ein6_2.get()), int(ein6_3.get()), int(ein6_4.get()), int(ein6_5.get()), int(ein6_6.get()), int(ein6_7.get()), int(ein6_8.get()), int(ein6_9.get())],[int(ein7_1.get()), int(ein7_2.get()), int(ein7_3.get()), int(ein7_4.get()), int(ein7_5.get()), int(ein7_6.get()), int(ein7_7.get()), int(ein7_8.get()), int(ein7_9.get())],[int(ein8_1.get()), int(ein8_2.get()), int(ein8_3.get()), int(ein8_4.get()), int(ein8_5.get()), int(ein8_6.get()), int(ein8_7.get()), int(ein8_8.get()), int(ein8_9.get())],[int(ein9_1.get()), int(ein9_2.get()), int(ein9_3.get()), int(ein9_4.get()), int(ein9_5.get()), int(ein9_6.get()), int(ein9_7.get()), int(ein9_8.get()), int(ein9_9.get())]]
-    ss.print_gitter(gitter)
-
-    if(ss.loese_sudoku(gitter)):
-        ein1_1.delete('0',END)
-        ein1_2.delete('0',END)
-        ein1_3.delete('0',END)
-        ein1_4.delete('0',END)
-        ein1_5.delete('0',END)
-        ein1_6.delete('0',END)
-        ein1_7.delete('0',END)
-        ein1_8.delete('0',END)
-        ein1_9.delete('0',END)
-
-        ein1_1.insert(END, gitter[0][0])
-        ein1_2.insert(END, gitter[0][1])
-        ein1_3.insert(END, gitter[0][2])
-        ein1_4.insert(END, gitter[0][3])
-        ein1_5.insert(END, gitter[0][4])
-        ein1_6.insert(END, gitter[0][5])
-        ein1_7.insert(END, gitter[0][6])
-        ein1_8.insert(END, gitter[0][7])
-        ein1_9.insert(END, gitter[0][8])
-
-        ein2_1.delete('0',END)
-        ein2_2.delete('0',END)
-        ein2_3.delete('0',END)
-        ein2_4.delete('0',END)
-        ein2_5.delete('0',END)
-        ein2_6.delete('0',END)
-        ein2_7.delete('0',END)
-        ein2_8.delete('0',END)
-        ein2_9.delete('0',END)
-
-        ein2_1.insert(END, gitter[1][0])
-        ein2_2.insert(END, gitter[1][1])
-        ein2_3.insert(END, gitter[1][2])
-        ein2_4.insert(END, gitter[1][3])
-        ein2_5.insert(END, gitter[1][4])
-        ein2_6.insert(END, gitter[1][5])
-        ein2_7.insert(END, gitter[1][6])
-        ein2_8.insert(END, gitter[1][7])
-        ein2_9.insert(END, gitter[1][8])
-
-        ein3_1.delete('0', END)
-        ein3_2.delete('0', END)
-        ein3_3.delete('0', END)
-        ein3_4.delete('0', END)
-        ein3_5.delete('0', END)
-        ein3_6.delete('0', END)
-        ein3_7.delete('0', END)
-        ein3_8.delete('0', END)
-        ein3_9.delete('0', END)
-
-        ein3_1.insert(END, gitter[2][0])
-        ein3_2.insert(END, gitter[2][1])
-        ein3_3.insert(END, gitter[2][2])
-        ein3_4.insert(END, gitter[2][3])
-        ein3_5.insert(END, gitter[2][4])
-        ein3_6.insert(END, gitter[2][5])
-        ein3_7.insert(END, gitter[2][6])
-        ein3_8.insert(END, gitter[2][7])
-        ein3_9.insert(END, gitter[2][8])
-
-        ein4_1.delete('0', END)
-        ein4_2.delete('0', END)
-        ein4_3.delete('0', END)
-        ein4_4.delete('0', END)
-        ein4_5.delete('0', END)
-        ein4_6.delete('0', END)
-        ein4_7.delete('0', END)
-        ein4_8.delete('0', END)
-        ein4_9.delete('0', END)
-
-        ein4_1.insert(END, gitter[3][0])
-        ein4_2.insert(END, gitter[3][1])
-        ein4_3.insert(END, gitter[3][2])
-        ein4_4.insert(END, gitter[3][3])
-        ein4_5.insert(END, gitter[3][4])
-        ein4_6.insert(END, gitter[3][5])
-        ein4_7.insert(END, gitter[3][6])
-        ein4_8.insert(END, gitter[3][7])
-        ein4_9.insert(END, gitter[3][8])
-
-        ein5_1.delete('0', END)
-        ein5_2.delete('0', END)
-        ein5_3.delete('0', END)
-        ein5_4.delete('0', END)
-        ein5_5.delete('0', END)
-        ein5_6.delete('0', END)
-        ein5_7.delete('0', END)
-        ein5_8.delete('0', END)
-        ein5_9.delete('0', END)
-
-        ein5_1.insert(END, gitter[4][0])
-        ein5_2.insert(END, gitter[4][1])
-        ein5_3.insert(END, gitter[4][2])
-        ein5_4.insert(END, gitter[4][3])
-        ein5_5.insert(END, gitter[4][4])
-        ein5_6.insert(END, gitter[4][5])
-        ein5_7.insert(END, gitter[4][6])
-        ein5_8.insert(END, gitter[4][7])
-        ein5_9.insert(END, gitter[4][8])
-
-        ein6_1.delete('0', END)
-        ein6_2.delete('0', END)
-        ein6_3.delete('0', END)
-        ein6_4.delete('0', END)
-        ein6_5.delete('0', END)
-        ein6_6.delete('0', END)
-        ein6_7.delete('0', END)
-        ein6_8.delete('0', END)
-        ein6_9.delete('0', END)
-
-        ein6_1.insert(END, gitter[5][0])
-        ein6_2.insert(END, gitter[5][1])
-        ein6_3.insert(END, gitter[5][2])
-        ein6_4.insert(END, gitter[5][3])
-        ein6_5.insert(END, gitter[5][4])
-        ein6_6.insert(END, gitter[5][5])
-        ein6_7.insert(END, gitter[5][6])
-        ein6_8.insert(END, gitter[5][7])
-        ein6_9.insert(END, gitter[5][8])
-
-        ein7_1.delete('0', END)
-        ein7_2.delete('0', END)
-        ein7_3.delete('0', END)
-        ein7_4.delete('0', END)
-        ein7_5.delete('0', END)
-        ein7_6.delete('0', END)
-        ein7_7.delete('0', END)
-        ein7_8.delete('0', END)
-        ein7_9.delete('0', END)
-
-        ein7_1.insert(END, gitter[6][0])
-        ein7_2.insert(END, gitter[6][1])
-        ein7_3.insert(END, gitter[6][2])
-        ein7_4.insert(END, gitter[6][3])
-        ein7_5.insert(END, gitter[6][4])
-        ein7_6.insert(END, gitter[6][5])
-        ein7_7.insert(END, gitter[6][6])
-        ein7_8.insert(END, gitter[6][7])
-        ein7_9.insert(END, gitter[6][8])
-
-        ein8_1.delete('0', END)
-        ein8_2.delete('0', END)
-        ein8_3.delete('0', END)
-        ein8_4.delete('0', END)
-        ein8_5.delete('0', END)
-        ein8_6.delete('0', END)
-        ein8_7.delete('0', END)
-        ein8_8.delete('0', END)
-        ein8_9.delete('0', END)
-
-        ein8_1.insert(END, gitter[7][0])
-        ein8_2.insert(END, gitter[7][1])
-        ein8_3.insert(END, gitter[7][2])
-        ein8_4.insert(END, gitter[7][3])
-        ein8_5.insert(END, gitter[7][4])
-        ein8_6.insert(END, gitter[7][5])
-        ein8_7.insert(END, gitter[7][6])
-        ein8_8.insert(END, gitter[7][7])
-        ein8_9.insert(END, gitter[7][8])
-
-        ein9_1.delete('0', END)
-        ein9_2.delete('0', END)
-        ein9_3.delete('0', END)
-        ein9_4.delete('0', END)
-        ein9_5.delete('0', END)
-        ein9_6.delete('0', END)
-        ein9_7.delete('0', END)
-        ein9_8.delete('0', END)
-        ein9_9.delete('0', END)
-
-        ein9_1.insert(END, gitter[8][0])
-        ein9_2.insert(END, gitter[8][1])
-        ein9_3.insert(END, gitter[8][2])
-        ein9_4.insert(END, gitter[8][3])
-        ein9_5.insert(END, gitter[8][4])
-        ein9_6.insert(END, gitter[8][5])
-        ein9_7.insert(END, gitter[8][6])
-        ein9_8.insert(END, gitter[8][7])
-        ein9_9.insert(END, gitter[8][8])
-
-
-
-
-fenster = Tk()
-fenster.title("Sudoku Löser")
-
-# Anweisungs-Label
-my_label = Label(fenster, text="Gib dein Sudoku ein: ")
-
-# In diesem Label wird nach dem Klick auf den Button der Benutzer
-# mit seinem eingegebenen Namen begrüsst.
-
-
-# Hier kann der Benutzer eine Eingabe machen
-ein1_1 = Entry(fenster, bd=5, width=2)
-ein1_2 = Entry(fenster, bd=5, width=2)
-ein1_3 = Entry(fenster, bd=5, width=2)
-ein1_4 = Entry(fenster, bd=5, width=2)
-ein1_5 = Entry(fenster, bd=5, width=2)
-ein1_6 = Entry(fenster, bd=5, width=2)
-ein1_6 = Entry(fenster, bd=5, width=2)
-ein1_7 = Entry(fenster, bd=5, width=2)
-ein1_8 = Entry(fenster, bd=5, width=2)
-ein1_9 = Entry(fenster, bd=5, width=2)
-
-ein2_1 = Entry(fenster, bd=5, width=2)
-ein2_2 = Entry(fenster, bd=5, width=2)
-ein2_3 = Entry(fenster, bd=5, width=2)
-ein2_4 = Entry(fenster, bd=5, width=2)
-ein2_5 = Entry(fenster, bd=5, width=2)
-ein2_6 = Entry(fenster, bd=5, width=2)
-ein2_6 = Entry(fenster, bd=5, width=2)
-ein2_7 = Entry(fenster, bd=5, width=2)
-ein2_8 = Entry(fenster, bd=5, width=2)
-ein2_9 = Entry(fenster, bd=5, width=2)
-
-
-ein2_1 = Entry(fenster, bd=5, width=2)
-ein2_2 = Entry(fenster, bd=5, width=2)
-ein2_3 = Entry(fenster, bd=5, width=2)
-ein2_4 = Entry(fenster, bd=5, width=2)
-ein2_5 = Entry(fenster, bd=5, width=2)
-ein2_6 = Entry(fenster, bd=5, width=2)
-ein2_6 = Entry(fenster, bd=5, width=2)
-ein2_7 = Entry(fenster, bd=5, width=2)
-ein2_8 = Entry(fenster, bd=5, width=2)
-ein2_9 = Entry(fenster, bd=5, width=2)
-
-ein3_1 = Entry(fenster, bd=5, width=2)
-ein3_2 = Entry(fenster, bd=5, width=2)
-ein3_3 = Entry(fenster, bd=5, width=2)
-ein3_4 = Entry(fenster, bd=5, width=2)
-ein3_5 = Entry(fenster, bd=5, width=2)
-ein3_6 = Entry(fenster, bd=5, width=2)
-ein3_6 = Entry(fenster, bd=5, width=2)
-ein3_7 = Entry(fenster, bd=5, width=2)
-ein3_8 = Entry(fenster, bd=5, width=2)
-ein3_9 = Entry(fenster, bd=5, width=2)
-
-ein4_1 = Entry(fenster, bd=5, width=2)
-ein4_2 = Entry(fenster, bd=5, width=2)
-ein4_3 = Entry(fenster, bd=5, width=2)
-ein4_4 = Entry(fenster, bd=5, width=2)
-ein4_5 = Entry(fenster, bd=5, width=2)
-ein4_6 = Entry(fenster, bd=5, width=2)
-ein4_6 = Entry(fenster, bd=5, width=2)
-ein4_7 = Entry(fenster, bd=5, width=2)
-ein4_8 = Entry(fenster, bd=5, width=2)
-ein4_9 = Entry(fenster, bd=5, width=2)
-
-ein5_1 = Entry(fenster, bd=5, width=2)
-ein5_2 = Entry(fenster, bd=5, width=2)
-ein5_3 = Entry(fenster, bd=5, width=2)
-ein5_4 = Entry(fenster, bd=5, width=2)
-ein5_5 = Entry(fenster, bd=5, width=2)
-ein5_6 = Entry(fenster, bd=5, width=2)
-ein5_6 = Entry(fenster, bd=5, width=2)
-ein5_7 = Entry(fenster, bd=5, width=2)
-ein5_8 = Entry(fenster, bd=5, width=2)
-ein5_9 = Entry(fenster, bd=5, width=2)
-
-ein6_1 = Entry(fenster, bd=5, width=2)
-ein6_2 = Entry(fenster, bd=5, width=2)
-ein6_3 = Entry(fenster, bd=5, width=2)
-ein6_4 = Entry(fenster, bd=5, width=2)
-ein6_5 = Entry(fenster, bd=5, width=2)
-ein6_6 = Entry(fenster, bd=5, width=2)
-ein6_6 = Entry(fenster, bd=5, width=2)
-ein6_7 = Entry(fenster, bd=5, width=2)
-ein6_8 = Entry(fenster, bd=5, width=2)
-ein6_9 = Entry(fenster, bd=5, width=2)
-
-ein7_1 = Entry(fenster, bd=5, width=2)
-ein7_2 = Entry(fenster, bd=5, width=2)
-ein7_3 = Entry(fenster, bd=5, width=2)
-ein7_4 = Entry(fenster, bd=5, width=2)
-ein7_5 = Entry(fenster, bd=5, width=2)
-ein7_6 = Entry(fenster, bd=5, width=2)
-ein7_6 = Entry(fenster, bd=5, width=2)
-ein7_7 = Entry(fenster, bd=5, width=2)
-ein7_8 = Entry(fenster, bd=5, width=2)
-ein7_9 = Entry(fenster, bd=5, width=2)
-
-ein8_1 = Entry(fenster, bd=5, width=2)
-ein8_2 = Entry(fenster, bd=5, width=2)
-ein8_3 = Entry(fenster, bd=5, width=2)
-ein8_4 = Entry(fenster, bd=5, width=2)
-ein8_5 = Entry(fenster, bd=5, width=2)
-ein8_6 = Entry(fenster, bd=5, width=2)
-ein8_6 = Entry(fenster, bd=5, width=2)
-ein8_7 = Entry(fenster, bd=5, width=2)
-ein8_8 = Entry(fenster, bd=5, width=2)
-ein8_9 = Entry(fenster, bd=5, width=2)
-
-ein9_1 = Entry(fenster, bd=5, width=2)
-ein9_2 = Entry(fenster, bd=5, width=2)
-ein9_3 = Entry(fenster, bd=5, width=2)
-ein9_4 = Entry(fenster, bd=5, width=2)
-ein9_5 = Entry(fenster, bd=5, width=2)
-ein9_6 = Entry(fenster, bd=5, width=2)
-ein9_6 = Entry(fenster, bd=5, width=2)
-ein9_7 = Entry(fenster, bd=5, width=2)
-ein9_8 = Entry(fenster, bd=5, width=2)
-ein9_9 = Entry(fenster, bd=5, width=2)
-
-welcom_button = Button(fenster, text="Klick me", command=button_action)
-exit_button = Button(fenster, text="Beenden", command=fenster.quit)
-
-
-# Nun fügen wir die Komponenten unserem Fenster hinzu
-my_label.grid(row = 0, column = 0)
-
-ein1_1.grid(row = 0, column = 1)
-ein1_2.grid(row = 0, column = 2)
-ein1_3.grid(row = 0, column = 3)
-ein1_4.grid(row = 0, column = 5)
-ein1_5.grid(row = 0, column = 6)
-ein1_6.grid(row = 0, column = 7)
-ein1_7.grid(row = 0, column = 9)
-ein1_8.grid(row = 0, column = 10)
-ein1_9.grid(row = 0, column = 11)
-
-ein2_1.grid(row = 1, column = 1)
-ein2_2.grid(row = 1, column = 2)
-ein2_3.grid(row = 1, column = 3)
-ein2_4.grid(row = 1, column = 5)
-ein2_5.grid(row = 1, column = 6)
-ein2_6.grid(row = 1, column = 7)
-ein2_7.grid(row = 1, column = 9)
-ein2_8.grid(row = 1, column = 10)
-ein2_9.grid(row = 1, column = 11)
-
-ein3_1.grid(row = 2, column = 1)
-ein3_2.grid(row = 2, column = 2)
-ein3_3.grid(row = 2, column = 3)
-ein3_4.grid(row = 2, column = 5)
-ein3_5.grid(row = 2, column = 6)
-ein3_6.grid(row = 2, column = 7)
-ein3_7.grid(row = 2, column = 9)
-ein3_8.grid(row = 2, column = 10)
-ein3_9.grid(row = 2, column = 11)
-
-ein4_1.grid(row = 4, column = 1)
-ein4_2.grid(row = 4, column = 2)
-ein4_3.grid(row = 4, column = 3)
-ein4_4.grid(row = 4, column = 5)
-ein4_5.grid(row = 4, column = 6)
-ein4_6.grid(row = 4, column = 7)
-ein4_7.grid(row = 4, column = 9)
-ein4_8.grid(row = 4, column = 10)
-ein4_9.grid(row = 4, column = 11)
-
-ein5_1.grid(row = 5, column = 1)
-ein5_2.grid(row = 5, column = 2)
-ein5_3.grid(row = 5, column = 3)
-ein5_4.grid(row = 5, column = 5)
-ein5_5.grid(row = 5, column = 6)
-ein5_6.grid(row = 5, column = 7)
-ein5_7.grid(row = 5, column = 9)
-ein5_8.grid(row = 5, column = 10)
-ein5_9.grid(row = 5, column = 11)
-
-ein6_1.grid(row = 6, column = 1)
-ein6_2.grid(row = 6, column = 2)
-ein6_3.grid(row = 6, column = 3)
-ein6_4.grid(row = 6, column = 5)
-ein6_5.grid(row = 6, column = 6)
-ein6_6.grid(row = 6, column = 7)
-ein6_7.grid(row = 6, column = 9)
-ein6_8.grid(row = 6, column = 10)
-ein6_9.grid(row = 6, column = 11)
-
-ein7_1.grid(row = 8, column = 1)
-ein7_2.grid(row = 8, column = 2)
-ein7_3.grid(row = 8, column = 3)
-ein7_4.grid(row = 8, column = 5)
-ein7_5.grid(row = 8, column = 6)
-ein7_6.grid(row = 8, column = 7)
-ein7_7.grid(row = 8, column = 9)
-ein7_8.grid(row = 8, column = 10)
-ein7_9.grid(row = 8, column = 11)
-
-ein8_1.grid(row = 9, column = 1)
-ein8_2.grid(row = 9, column = 2)
-ein8_3.grid(row = 9, column = 3)
-ein8_4.grid(row = 9, column = 5)
-ein8_5.grid(row = 9, column = 6)
-ein8_6.grid(row = 9, column = 7)
-ein8_7.grid(row = 9, column = 9)
-ein8_8.grid(row = 9, column = 10)
-ein8_9.grid(row = 9, column = 11)
-
-ein9_1.grid(row = 10, column = 1)
-ein9_2.grid(row = 10, column = 2)
-ein9_3.grid(row = 10, column = 3)
-ein9_4.grid(row = 10, column = 5)
-ein9_5.grid(row = 10, column = 6)
-ein9_6.grid(row = 10, column = 7)
-ein9_7.grid(row = 10, column = 9)
-ein9_8.grid(row = 10, column = 10)
-ein9_9.grid(row = 10, column = 11)
-
-ein1_1.insert(END,0)
-ein1_2.insert(END,0)
-ein1_3.insert(END,0)
-ein1_4.insert(END,0)
-ein1_5.insert(END,0)
-ein1_6.insert(END,0)
-ein1_7.insert(END,0)
-ein1_8.insert(END,0)
-ein1_9.insert(END,0)
-
-ein2_1.insert(END,0)
-ein2_2.insert(END,0)
-ein2_3.insert(END,0)
-ein2_4.insert(END,0)
-ein2_5.insert(END,0)
-ein2_6.insert(END,0)
-ein2_7.insert(END,0)
-ein2_8.insert(END,0)
-ein2_9.insert(END,0)
-
-ein3_1.insert(END,0)
-ein3_2.insert(END,0)
-ein3_3.insert(END,0)
-ein3_4.insert(END,0)
-ein3_5.insert(END,0)
-ein3_6.insert(END,0)
-ein3_7.insert(END,0)
-ein3_8.insert(END,0)
-ein3_9.insert(END,0)
-
-ein4_1.insert(END,0)
-ein4_2.insert(END,0)
-ein4_3.insert(END,0)
-ein4_4.insert(END,0)
-ein4_5.insert(END,0)
-ein4_6.insert(END,0)
-ein4_7.insert(END,0)
-ein4_8.insert(END,0)
-ein4_9.insert(END,0)
-
-ein5_1.insert(END,0)
-ein5_2.insert(END,0)
-ein5_3.insert(END,0)
-ein5_4.insert(END,0)
-ein5_5.insert(END,0)
-ein5_6.insert(END,0)
-ein5_7.insert(END,0)
-ein5_8.insert(END,0)
-ein5_9.insert(END,0)
-
-ein6_1.insert(END,0)
-ein6_2.insert(END,0)
-ein6_3.insert(END,0)
-ein6_4.insert(END,0)
-ein6_5.insert(END,0)
-ein6_6.insert(END,0)
-ein6_7.insert(END,0)
-ein6_8.insert(END,0)
-ein6_9.insert(END,0)
-
-ein7_1.insert(END,0)
-ein7_2.insert(END,0)
-ein7_3.insert(END,0)
-ein7_4.insert(END,0)
-ein7_5.insert(END,0)
-ein7_6.insert(END,0)
-ein7_7.insert(END,0)
-ein7_8.insert(END,0)
-ein7_9.insert(END,0)
-
-ein8_1.insert(END,0)
-ein8_2.insert(END,0)
-ein8_3.insert(END,0)
-ein8_4.insert(END,0)
-ein8_5.insert(END,0)
-ein8_6.insert(END,0)
-ein8_7.insert(END,0)
-ein8_8.insert(END,0)
-ein8_9.insert(END,0)
-
-ein9_1.insert(END,0)
-ein9_2.insert(END,0)
-ein9_3.insert(END,0)
-ein9_4.insert(END,0)
-ein9_5.insert(END,0)
-ein9_6.insert(END,0)
-ein9_7.insert(END,0)
-ein9_8.insert(END,0)
-ein9_9.insert(END,0)
-
-# Seperator object
-solve_button = Button(fenster, text = "Lösen", command=button_action )
-solve_button.grid(row = 11, column = 0)
-
-
-
-mainloop()
 
+pygame.init()
+#Anzeige Parameter
+windowsizex = 560
+windowsizey = 560
+gameBorderYLeft = 100
+gameBorderYRight = 700
+win = pygame.display.set_mode((windowsizex,windowsizey))
+run = True
+activFlag = 0
+
+#Text Parameter
+pygame.display.set_caption("Sudoku Solver")
+font = pygame.font.SysFont('comicsans', 36, True)
+font1 = pygame.font.SysFont('comicsans', 100, True)
+
+clockspeed = pygame.time.Clock()
+
+
+
+
+black = (0,0,0)
+white = (255,255,255)
+red = (255,0,0)
+green = (0, 255, 0)
+width = 40
+hight = 40
+
+
+class Button(object):
+    def __init__(self, x, y, width, hight, text):
+        #Startposition
+        self.x = x
+        self.y = y
+        self.width = width
+        self.hight = hight
+        self.text = text
+
+    def draw(self, win):
+        pygame.draw.rect(win, (255, 0, 0), (self.x, self.y, self.width, self.hight),2)
+        text = font.render(self.text, 1, red)
+        win.blit(text, ((self.x + 10), (self.y + 5)))
+
+
+
+
+
+    def select(self, pos):
+        if (self.x <= pos[0]) and ((self.x+self.width) >= pos[0]):
+            if (self.y <= pos[1]) and ((self.y + self.hight) >= pos[1]):
+                return True
+        else:
+            return False
+
+
+
+class platz(object):
+    def __init__(self, x, y, value):
+        #Startposition
+        self.x = x
+        self.y = y
+        #Wert
+        self.value = value
+        #Activ
+        self.active = False
+
+    def draw(self, win):
+
+        if self.active:
+            pygame.draw.rect(win, (255, 0, 0), (self.x, self.y, width, hight),2)
+            text = font.render(str(self.value), 1, red)
+            win.blit(text, ((self.x + 10), (self.y + 5)))
+        else:
+            pygame.draw.rect(win, (0, 0, 0), (self.x, self.y, width, hight), 2)
+            text = font.render(str(self.value), 1, black)
+            win.blit(text, ((self.x + 15), (self.y + 10)))
+
+
+    def select(self, pos):
+        if (self.x <= pos[0]) and ((self.x+width) >= pos[0]):
+            if (self.y <= pos[1]) and ((self.y + hight) >= pos[1]):
+                return True
+        else:
+            return False
+
+
+def draw():
+    global spielfeld, solve, clear, quiter
+    win.fill(white)
+    solve.draw(win)
+    clear.draw(win)
+    for feld in spielfeld:
+        feld.draw(win)
+    pygame.draw.line(win, black, [220, 80], [220, 480],5)
+    pygame.draw.line(win, black, [80, 220], [480, 220],5)
+    pygame.draw.line(win, black, [340, 80], [340, 480], 5)
+    pygame.draw.line(win, black, [80, 340], [480, 340], 5)
+
+    pygame.display.update()
+
+
+def quitGame():
+    pygame.quit()
+
+def init_sudoku():
+    global spielfeld, solve, clear, quiter
+    spielfeld = []
+    for x in range(9):
+        for y in range(9):
+            spielfeld.append(platz((100 + 40 * x), (100 + 40 * y), 0))
+    solve = Button(400,500,100,30,"Solve")
+    clear = Button(80,500,100,30,"Clear")
+
+
+
+
+init_sudoku()
+draw()
+while run:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
+
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            pos = pygame.mouse.get_pos()
+            #Active Felder abwählen
+            if activFlag == 1:
+                for feld in spielfeld:
+                    feld.active = False
+                activFlag = 0
+            #Auswahl Solver
+            if solve.select(pos):
+                #Umrechnen in 2D Array aus liste
+                cnt = 0
+                y = 0
+                x = 0
+                temp = [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0]]
+                for feld in spielfeld:
+                    if (cnt ) % 9 == 0:
+                        y = y + 1
+                    x = (cnt ) - ((y - 1) * 9)
+                    temp[x][y-1] = int(feld.value)
+                    cnt = cnt + 1
+                is_solved = ss.loese_sudoku(temp)
+                if is_solved:
+                    cnt = 0
+                    for x in range(9):
+                        for y in range(9):
+                            spielfeld[cnt].value = temp[y][x]
+                            cnt += 1
+
+            if clear.select(pos):
+                for feld in spielfeld:
+                    feld.value = 0
+
+
+            for feld in spielfeld:
+                if feld.select(pos):
+                    activFlag = 1
+                    feld.active = True
+        if event.type  == pygame.KEYDOWN:
+            for feld in spielfeld:
+                if feld.active:
+                    if event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_0:
+                            key = 0
+                            activFlag = 0
+                        if event.key == pygame.K_1:
+                            key = 1
+                            activFlag = 0
+                        if event.key == pygame.K_2:
+                            key = 2
+                            activFlag = 0
+                        if event.key == pygame.K_3:
+                            key = 3
+                            activFlag = 0
+                        if event.key == pygame.K_4:
+                            key = 4
+                            activFlag = 0
+                        if event.key == pygame.K_5:
+                            key = 5
+                            activFlag = 0
+                        if event.key == pygame.K_6:
+                            key = 6
+                            activFlag = 0
+                        if event.key == pygame.K_7:
+                            key = 7
+                            activFlag = 0
+                        if event.key == pygame.K_8:
+                            key = 8
+                            activFlag = 0
+                        if event.key == pygame.K_9:
+                            key = 9
+                            activFlag = 0
+                        if event.key == pygame.K_DELETE:
+                            key = None
+                        feld.value = key
+                        if event.key == pygame.K_RETURN:
+                            for feld in spielfeld:
+                                feld.active = False
+
+
+
+
+    draw()
+
+
+
+    clockspeed.tick(4)
+
+quitGame()

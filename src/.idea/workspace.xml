@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3cc9ebc9-787d-430d-8d8f-7dd43b348fb8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sudoku_solver.py" beforeDir="false" afterPath="$PROJECT_DIR$/sudoku_solver.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,9 +103,9 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="349" y="161" key="SettingsEditor" timestamp="1613735394592">
+    <state x="349" y="161" key="SettingsEditor" timestamp="1614968121633">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="349" y="161" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1613735394592" />
+    <state x="349" y="161" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1614968121633" />
   </component>
 </project>

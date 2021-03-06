@@ -40,6 +40,7 @@ import numpy as np
 ## Spielfeld.
 # Functions
 
+
 def get_gitter():
     matrix = np.zeros((9,9))
     print("Bitte Zahlen in 3er-Grüppchen, getrennt durch ein Leerzeichen eingeben. Wenn Feld frei bitte 0 eingeben.")
