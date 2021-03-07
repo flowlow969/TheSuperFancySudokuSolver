@@ -10,6 +10,7 @@ gameBorderYRight = 700
 win = pygame.display.set_mode((windowsizex,windowsizey))
 run = True
 activFlag = 0
+dimension = 16
 
 #Text Parameter
 pygame.display.set_caption("Sudoku Solver")
@@ -87,11 +88,10 @@ class platz(object):
 
 
 def draw():
-    global spielfeld, solve, clear, quiter,demo
+    global spielfeld, solve, clear, quiter
     win.fill(white)
     solve.draw(win)
     clear.draw(win)
-    demo.draw(win)
     for feld in spielfeld:
         feld.draw(win)
     pygame.draw.line(win, black, [220, 80], [220, 480],5)
@@ -100,26 +100,19 @@ def draw():
     pygame.draw.line(win, black, [80, 340], [480, 340], 5)
 
     pygame.display.update()
-def fill_fields(temp):
-    global spielfeld
-    cnt = 0
-    for x in range(9):
-        for y in range(9):
-            spielfeld[cnt].value = temp[y][x]
-            cnt += 1
+
 
 def quitGame():
     pygame.quit()
 
 def init_sudoku():
-    global spielfeld, solve, clear, quiter, demo
+    global spielfeld, solve, clear, quiter
     spielfeld = []
-    for x in range(9):
-        for y in range(9):
+    for x in range(dimension):
+        for y in range(dimension):
             spielfeld.append(platz((100 + 40 * x), (100 + 40 * y), 0))
     solve = Button(400,500,100,30,"Solve")
-    clear = Button(60,500,100,30,"Clear")
-    demo = Button(230,500,100,30,"Demo")
+    clear = Button(80,500,100,30,"Clear")
 
 
 
@@ -155,11 +148,11 @@ while run:
                     cnt = cnt + 1
                 is_solved = ss.loese_sudoku(temp)
                 if is_solved:
-                    fill_fields(temp)
-
-            if demo.select(pos):
-                temp = ss.test_sudoku()
-                fill_fields(temp)
+                    cnt = 0
+                    for x in range(9):
+                        for y in range(9):
+                            spielfeld[cnt].value = temp[y][x]
+                            cnt += 1
 
             if clear.select(pos):
                 for feld in spielfeld:
