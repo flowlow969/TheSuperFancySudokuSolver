@@ -158,6 +158,11 @@ def loese_sudoku(gi,dimension = 9):
     return False
 
 def test_sudoku(dimension = 9):
+    """Gibt ein Sudoku-Gitter der Größe 9 oder 16 zurück.
+
+         Args:
+            dimension: Die Anzahl der Felder in einer Zeile oder Spalte des Sudokus.
+        """
     if dimension == 9:
         return [[7,8,0,4,0,0,1,2,0],
                  [6,0,0,0,7,5,0,0,9],
