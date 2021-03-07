@@ -8,29 +8,40 @@ windowsizey = 560
 gameBorderYLeft = 100
 gameBorderYRight = 700
 win = pygame.display.set_mode((windowsizex,windowsizey))
-run = True
-activFlag = 0
+#Betriebszustände
+run = True      #Schleife wiederhohlt sich
+activFlag = 0   #Ein Feld ist aktiv
+
+#Fenster Tittel Festlegen
+pygame.display.set_caption("Sudoku Solver")
 
 #Text Parameter
-pygame.display.set_caption("Sudoku Solver")
 font = pygame.font.SysFont('comicsans', 36, True)
 font1 = pygame.font.SysFont('comicsans', 100, True)
 
+#Initalisierung der Clock
 clockspeed = pygame.time.Clock()
 
+#Festlegen der Standart Farben
+black = (0,0,0)             #RGB wert für Farbe Schwarz
+white = (255,255,255)       #RGB wert für Farbe Weiss
+red = (255,0,0)             #RGB wert für Farbe Rot
 
-
-
-black = (0,0,0)
-white = (255,255,255)
-red = (255,0,0)
-green = (0, 255, 0)
+#Abmasse der eingabe Felder
 width = 40
 hight = 40
 
-
+#Klasse für einen Button im Spiel
 class Button(object):
     def __init__(self, x, y, width, hight, text):
+        """ Initalisiert eine Instanz eines Objekts
+                    Args:
+                            self:   Instanz eines Objekts.
+                            x:      x Positzion des Felds
+                            y:      y Positzion des Felds
+                            width:  Breite des Buttons
+                            hight:  Höhe des Buttons
+                            Text:   Beschriftung des Felds"""
         #Startposition
         self.x = x
         self.y = y
@@ -39,15 +50,21 @@ class Button(object):
         self.text = text
 
     def draw(self, win):
+        """Übergibt die Grafische darstellung an pygame
+                        Args:
+                            self:   Instanz eines Objekts.
+                            win:    Fenster in dem dargestelt wird. """
         pygame.draw.rect(win, (255, 0, 0), (self.x, self.y, self.width, self.hight),2)
         text = font.render(self.text, 1, red)
         win.blit(text, ((self.x + 10), (self.y + 5)))
 
-
-
-
-
     def select(self, pos):
+        """Prüft ob die Maus diesen Button angeklickt hat
+               Args:
+                   self:   Instanz eines Objekts.
+                   pos:    Positzion des Mausklicks.
+
+               Returns:    Bool für Button angeklickt oder nicht. """
         if (self.x <= pos[0]) and ((self.x+self.width) >= pos[0]):
             if (self.y <= pos[1]) and ((self.y + self.hight) >= pos[1]):
                 return True
@@ -58,6 +75,12 @@ class Button(object):
 
 class platz(object):
     def __init__(self, x, y, value):
+        """ Initalisiert eine Instanz eines Objekts
+            Args:
+                    self:   Instanz eines Objekts.
+                    x:      x Positzion des Felds
+                    y:      y Positzion des Felds
+                    value:  Wert des Felds"""
         #Startposition
         self.x = x
         self.y = y
@@ -67,7 +90,10 @@ class platz(object):
         self.active = False
 
     def draw(self, win):
-
+        """Übergibt die Grafische darstellung an pygame
+                Args:
+                    self:   Instanz eines Objekts.
+                    win:    Fenster in dem dargestelt wird. """
         if self.active:
             pygame.draw.rect(win, (255, 0, 0), (self.x, self.y, width, hight),2)
             text = font.render(str(self.value), 1, red)
@@ -79,6 +105,12 @@ class platz(object):
 
 
     def select(self, pos):
+        """Prüft ob die Maus diesen Button angeklickt hat
+        Args:
+            self:   Instanz eines Objekts.
+            pos:    Positzion des Mausklicks.
+
+        Returns:    Bool für Platz angeklickt oder nicht. """
         if (self.x <= pos[0]) and ((self.x+width) >= pos[0]):
             if (self.y <= pos[1]) and ((self.y + hight) >= pos[1]):
                 return True
@@ -86,7 +118,8 @@ class platz(object):
             return False
 
 
-def draw():
+def redraw():
+    """Zeigt alle Elemente des GUI's aus."""
     global spielfeld, solve, clear, quiter,demo
     win.fill(white)
     solve.draw(win)
@@ -98,9 +131,12 @@ def draw():
     pygame.draw.line(win, black, [80, 220], [480, 220],5)
     pygame.draw.line(win, black, [340, 80], [340, 480], 5)
     pygame.draw.line(win, black, [80, 340], [480, 340], 5)
-
     pygame.display.update()
+
 def fill_fields(temp):
+    """Nimmt eine Liste entgegen und befült damit das Sudoku
+        Args:
+            temp:   9*9 Liste mit werten zwischen 0-9"""
     global spielfeld
     cnt = 0
     for x in range(9):
@@ -109,9 +145,11 @@ def fill_fields(temp):
             cnt += 1
 
 def quitGame():
+    """Beendet das Spiel"""
     pygame.quit()
 
 def init_sudoku():
+    """Initalisiert alle Objekte des GUI's"""
     global spielfeld, solve, clear, quiter, demo
     spielfeld = []
     for x in range(9):
@@ -123,14 +161,17 @@ def init_sudoku():
 
 
 
-
+#GUI Initalisieren
 init_sudoku()
-draw()
+
+#Spielschleife:
 while run:
+    #Abfangen von eingabe Ereignisen
     for event in pygame.event.get():
+        #Abfangen des Fenster schliesen ereignis
         if event.type == pygame.QUIT:
             run = False
-
+        #Abfangen von Mausclicks
         if event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
             #Active Felder abwählen
@@ -157,19 +198,22 @@ while run:
                 if is_solved:
                     fill_fields(temp)
 
+            #Einsetzten eines Demo Felds
             if demo.select(pos):
                 temp = ss.test_sudoku()
                 fill_fields(temp)
 
+            #Bereinigen aller Felder
             if clear.select(pos):
                 for feld in spielfeld:
                     feld.value = 0
 
-
+            #Auswählen eines Felds
             for feld in spielfeld:
                 if feld.select(pos):
                     activFlag = 1
                     feld.active = True
+        #Abfangen von eingabe über Tastatur
         if event.type  == pygame.KEYDOWN:
             for feld in spielfeld:
                 if feld.active:
@@ -221,13 +265,7 @@ while run:
                             for feld in spielfeld:
                                 feld.active = False
 
-
-
-
-    draw()
-
-
-
+    redraw()
     clockspeed.tick(4)
 
 quitGame()
