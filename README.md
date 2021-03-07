@@ -2,11 +2,11 @@
 
 # Sudoku Solver
 
-Sudoku Solver is a Python library to solve sudokus with an eas.
+Sudoku Solver is a Python library to solve sudokus with an ease.
 
 
 ## Usage
-### Uing the Gui
+### Using the Gui
 Mac:
 ```
 python3 main.py
@@ -30,6 +30,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate.
 
 ###For questions and suggestions: 
-[Florian Herrmann](mailto:florian.herrmann@stud.hawk.de ?subject=[GitHub-SudokuSolver] Source Han Sans)
-[Leander Teichmann](mailto:leander.teichmann@stud.hawk.de?subject=[GitHub-SudokuSolver] Source Han Sans)
+[Florian Herrmann](mailto:florian.herrmann@stud.hawk.de ?subject=[GitHub-SudokuSolver] )
+[Leander Teichmann](mailto:leander.teichmann@stud.hawk.de?subject=[GitHub-SudokuSolver] )
 
