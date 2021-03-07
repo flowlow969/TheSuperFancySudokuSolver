@@ -218,17 +218,17 @@ def test_sudoku(dimension = 9):
 
 
 
-#Testmöglichkeit
+#Testmöglichkeit:
 
 #9*9 Sudoku lösen
-
-#print_gitter(test_sudoku(9),9)
-#loese_sudoku(test_sudoku(9),9)
-#print_gitter(testgitter9x9,9)
+#gitter = test_sudoku(9)
+#print_gitter(gitter,9)
+#loese_sudoku(gitter,9)
+#print_gitter(gitter,9)
 
 
 #16*16 Sudoku lösen
-
-#print_gitter(testgitter16x16,16)
-#loese_sudoku(testgitter16x16,16)
-#print_gitter(testgitter16x16,16)
+#gitter = test_sudoku(16)
+#print_gitter(gitter,16)
+#loese_sudoku(gitter,16)
+#print_gitter(gitter,16)
