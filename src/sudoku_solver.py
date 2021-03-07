@@ -131,7 +131,7 @@ def pruefe_ziffer(gi,r,c,n,d):
     return False
 
 
-def loese_sudoku(gi,dimension):
+def loese_sudoku(gi,dimension = 9):
     """Löst ein Sudoku-Gitter beliebiger Größe.
 
      Args:
