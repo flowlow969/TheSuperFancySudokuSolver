@@ -1,37 +1,3 @@
-"""! @brief A Super Fancy Sudoku Solver with Backtracking."""
-##
-# @mainpage Sudoku Solver mit Backtracking
-#
-# @section Für unser Python Programmier Projekt haben  wir einen Susoku Solver mit Backtracking gebaut.
-#
-# @section Notizen
-# - Das GUI ist ein optionaler Bestandteil.
-
-##
-# @file mail.py
-#
-# @brief Main Datei des Sudoku Solvers.
-#
-# @section description_doxygen_example Description
-# Example Python program with Doxygen style comments.
-#
-# @section libraries_main Libraries/Modules
-# - time standard library (https://docs.python.org/3/library/time.html)
-#   - Access to sleep function.
-# - sensors module (local)
-#   - Access to Sensor and TempSensor classes.
-#
-# @section notes_doxygen_example Notes
-# - Comments are Doxygen compatible.
-#
-# @section todo_doxygen_example TODO
-# - Funktionen Verstehen.
-#
-# @section author_doxygen_example Author(s)
-# - Created by Florian Herrmann on 20/01/2021.
-# - Modified by John Woolsey on 06/11/2020.
-#
-
 """
 Der Funktion loese_sudoku wird ein ungelöstes Sudoku-Gitter beliebiger Größe übergeben (leere Felder werden mit der Ziffer 0 gekennzeichnet),
 diese Funktion löst das Sudoku mittels Backtracking und ändert dementsprechend die Ziffern im übergebenen Sudoku.
@@ -40,7 +6,8 @@ Dafür werden die Funktionen:    finde_leeres_Feld
                                 check_column
                                 check_square
                                 pruefe_Ziffer benutzt.
-Mithilfe von print_gitter lässt sich das Sudoku-Gitter vor und nach dem Lösen ausgeben.                            
+Mithilfe von print_gitter lässt sich das Sudoku-Gitter vor und nach dem Lösen ausgeben.
+Die Funktion test_sudoku returnt ein 9x9 oder 16x16 Sudoku-Gitter zum Testen.
 """
 
 import numpy as np
@@ -51,7 +18,7 @@ def print_gitter(gi,dimension):
     Args:
         gi(list):  Das Sudokugitter als 2-dimensionsales Array.
                    Jedes Element der Liste ist wieder eine Liste mit den Ziffern einer Zeile.
-        dimension: Die Anzahl der Felder in einer Zeile oder Spalte des Sudokus.
+        dimension(int): Die Anzahl der Felder in einer Zeile oder Spalte des Sudokus.
     """
     d = int(np.sqrt(dimension))
     for r in range(d*d):
@@ -84,9 +51,10 @@ def finde_leeres_feld(gi,d):
     Args:
         gi(list):  Das Sudokugitter als 2-dimensionsales Array.
                    Jedes Element der Liste ist wieder eine Liste mit den Ziffern einer Zeile.
-        d:         Wurzel von dimension.
+        d(int):    Wurzel von dimension.
 
-    Returns:       Tupel mit Koordinaten (r = row, c = column) des gefundenen leeren Feldes
+    Returns:
+        (tupel):   Koordinaten (r = row, c = column) des gefundenen leeren Feldes
     """
     
     for r in range(d*d):
@@ -97,7 +65,19 @@ def finde_leeres_feld(gi,d):
 
 
 def check_row(gi,r,n,d):
-    """Prüft in der Reihe des Feldes, ob Ziffer n noch nicht vorhanden ist."""
+    """Prüft in der Reihe des Feldes, ob Ziffer n noch nicht vorhanden ist.
+
+    Args:
+        gi(list):  Das Sudokugitter als 2-dimensionsales Array.
+                       Jedes Element der Liste ist wieder eine Liste mit den Ziffern einer Zeile.
+        r(int):    Reihe des Feldes.
+        n(int):    Ziffer, die geprüft wird.
+        d(int):    Wurzel von dimension.
+
+    Returns:
+        (bool):    False, wenn Ziffer n schon vorhanden.
+                   True, wenn Ziffer n noch nicht vorhanden.
+    """
     for c in range(d*d):
         if gi[r][c] == n:
             return False
@@ -105,7 +85,19 @@ def check_row(gi,r,n,d):
 
 
 def check_column(gi,c,n,d):
-    """Prüft in der Spalte des Feldes, ob Ziffer n noch nicht vorhanden ist."""
+    """Prüft in der Spalte des Feldes, ob Ziffer n noch nicht vorhanden ist.
+
+    Args:
+        gi(list):  Das Sudokugitter als 2-dimensionsales Array.
+                       Jedes Element der Liste ist wieder eine Liste mit den Ziffern einer Zeile.
+        c(int):    Spalte des Feldes.
+        n(int):    Ziffer, die geprüft wird.
+        d(int):    Wurzel von dimension.
+
+    Returns:
+        (bool):    False, wenn Ziffer n schon vorhanden.
+                   True, wenn Ziffer n noch nicht vorhanden.
+    """
     for r in range(d*d):
         if gi[r][c] == n:
             return False
@@ -113,7 +105,20 @@ def check_column(gi,c,n,d):
 
 
 def check_square(gi,r,c,n,d):
-    """Prüft in dem d*d Quadrat des Feldes, ob Ziffer n noch nicht vorhanden ist."""
+    """Prüft in dem d*d Quadrat des Feldes, ob Ziffer n noch nicht vorhanden ist.
+
+    Args:
+        gi(list):  Das Sudokugitter als 2-dimensionsales Array.
+                   Jedes Element der Liste ist wieder eine Liste mit den Ziffern einer Zeile.
+        r(int):    Reihe des Feldes.
+        c(int):    Spalte des Feldes.
+        n(int):    Ziffer, die geprüft wird.
+        d(int):    Wurzel von dimension.
+
+    Returns:
+        (bool):    False, wenn Ziffer n schon vorhanden.
+                   True, wenn Ziffer n noch nicht vorhanden.
+    """
     r0 = (r//d)*d
     c0 = (c//d)*d
     
@@ -125,7 +130,20 @@ def check_square(gi,r,c,n,d):
 
 
 def pruefe_ziffer(gi,r,c,n,d):
-    """Prüft in der Reihe, Spalte und d*d-Quadrat des Feldes, ob Ziffer n noch nicht vorhanden ist."""
+    """Prüft in der Reihe, Spalte und d*d-Quadrat des Feldes, ob Ziffer n noch nicht vorhanden ist.
+
+    Args:
+        gi(list):  Das Sudokugitter als 2-dimensionsales Array.
+                   Jedes Element der Liste ist wieder eine Liste mit den Ziffern einer Zeile.
+        r(int):    Reihe des Feldes.
+        c(int):    Spalte des Feldes.
+        n(int):    Ziffer, die geprüft wird.
+        d(int):    Wurzel von dimension.
+        
+    Returns:
+        (bool):    False, wenn Ziffer n schon vorhanden.
+                   True, wenn Ziffer n noch nicht vorhanden.
+    """
     if check_column(gi,c,n,d) and check_row(gi,r,n,d) and check_square(gi,r,c,n,d):
         return True
     return False
@@ -137,7 +155,12 @@ def loese_sudoku(gi,dimension = 9):
      Args:
         gi(list):  Das Sudokugitter als 2-dimensionsales Array.
                    Jedes Element der Liste ist wieder eine Liste mit den Ziffern einer Zeile.
-        dimension: Die Anzahl der Felder in einer Zeile oder Spalte des Sudokus.
+        dimension(int): Die Anzahl der Felder in einer Zeile oder Spalte des Sudokus.
+                        default = 9.
+
+    Returns:
+        (bool):    False: Feld nicht gelöst.
+                   True: Feld gelöst.
     """
     d = int(np.sqrt(dimension))
     find = finde_leeres_feld(gi,d)
@@ -161,8 +184,8 @@ def test_sudoku(dimension = 9):
     """Gibt ein Sudoku-Gitter der Größe 9 oder 16 zurück.
 
          Args:
-            dimension: Die Anzahl der Felder in einer Zeile oder Spalte des Sudokus.
-        """
+            dimension (int): Die Anzahl der Felder in einer Zeile oder Spalte des Sudokus.
+    """
     if dimension == 9:
         return [[7,8,0,4,0,0,1,2,0],
                  [6,0,0,0,7,5,0,0,9],
@@ -193,14 +216,14 @@ def test_sudoku(dimension = 9):
     else:
         print("Enter Dimension 9 or 16")
 
+
+
 #Testmöglichkeit
-
-
 
 #9*9 Sudoku lösen
 
-#print_gitter(testgitter9x9,9)
-#loese_sudoku(testgitter9x9,9)
+#print_gitter(test_sudoku(9),9)
+#loese_sudoku(test_sudoku(9),9)
 #print_gitter(testgitter9x9,9)
 
 
