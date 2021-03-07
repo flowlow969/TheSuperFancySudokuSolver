@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3cc9ebc9-787d-430d-8d8f-7dd43b348fb8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/sudoku_solver.py" beforeDir="false" afterPath="$PROJECT_DIR$/sudoku_solver.py" afterDir="false" />
-    </list>
+    <list default="true" id="3cc9ebc9-787d-430d-8d8f-7dd43b348fb8" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
