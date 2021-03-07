@@ -28,7 +28,7 @@
 	\frametitle{Was ist ein Sudoku?} 
 	\begin{minipage}{0.48\textwidth}
 	\begin{itemize}
-		\item Das Spielfeld besteht aus $9 \cdot 9$ Feldern
+		\item Das Spielfeld besteht aus $n \cdot n$ Feldern
 		\item In der Regel: $n = 9$
 		\item Ziel: Alle leeren Felder mit Zahlen füllen, sodass die Zahlen von 1 - 9 jeweils nur einmal vorkommen 
 		\item in jeder Spalte 
@@ -42,41 +42,48 @@
 	\end{minipage}
 \end{frame}
 
-\section{Projektaufbau:}
+\section{Projektaufbau}
 \begin{frame}
-	\frametitle{Projektaufbau:} 
+	\frametitle{Projektaufbau} 
 	\textbf{Ziele:}\\
-	\textbf{Muss}:\\
-	 Sudoku-Solver\\
-	\textbf{Soll:} \\
-	Dokumentation\\
-	Variable Sudoku-Gittergröße\\
-	\textbf{Kann:} \\
-	GUI\\
-	Versionsverwaltung mit git\\
-	Organisation mit Agantty (Gantt-chart)
+	\noindent \hspace*{5mm} \textbf{Muss}:\\
+	 \noindent \hspace*{10mm}Sudoku-Solver\\
+	\noindent \hspace*{5mm} \textbf{Soll:} \\
+	\noindent \hspace*{10mm}Dokumentation\\
+	\noindent \hspace*{10mm}Variable Sudoku-Gittergröße\\
+	\noindent \hspace*{5mm} \textbf{Kann:} \\
+	\noindent \hspace*{10mm}GUI\\
+	\noindent \hspace*{10mm}Versionsverwaltung mit git\\
+	\noindent \hspace*{10mm}Organisation mit Agantty (Ganttchart)
+\end{frame}
+
+\begin{frame}
+	\frametitle{} 
+	Ganntchart:\\
+	\centering
+	\includegraphics[width=1.05\textwidth]{img/gannt.png}
 \end{frame}
 
 \section{Was ist Rekursion?}
 \begin{frame}
 	\frametitle{Was ist Rekursion?} 
 	\begin{minipage}{0.48\textwidth}
-		Rekursion ist ein Programmierkonzept, bei der eine Funktion nur einen kleinen Teil des Problems löst und damit ein Problem ein bisschen verkleinter, und sich dann selbst aufruft um den Rest des Problems zu lösen.\\
+		Rekursion ist ein Programmierkonzept, bei der eine Funktion nur einen kleinen Teil des Problems löst und damit ein Problem ein bisschen verkleinert und sich dann selbst aufruft, um den Rest des Problems zu lösen.\\
 		Das wird so lange fortgesetzt, bis das Problem gelöst ist.
 	\end{minipage}
 	\begin{minipage}{0.48\textwidth}
 	\centering
 	\includegraphics[width=0.95\textwidth]{img/fibo.png}
 	\flushleft
-	Fibonacci sequence:\\
-	0\\
-	1\\
-	1\\
-	2\\
-	3\\
-	5\\
-	8\\
-	13\\
+	\noindent \hspace*{5mm} Fibonacci sequence:\\
+	\noindent \hspace*{5mm} 0\\
+	\noindent \hspace*{5mm} 1\\
+	\noindent \hspace*{5mm} 1\\
+	\noindent \hspace*{5mm} 2\\
+	\noindent \hspace*{5mm} 3\\
+	\noindent \hspace*{5mm} 5\\
+	\noindent \hspace*{5mm} 8\\
+	\noindent \hspace*{5mm} 13\\
 	\end{minipage}
 \end{frame}
 
@@ -92,7 +99,7 @@
 \begin{frame}
 	\frametitle{Lösungstrategie} 
 
-	\textbf{Backtracking beim Susokulösen:}
+	\textbf{Backtracking beim Sudokulösen:}
 	
 	\begin{itemize}
 		\item [1.] Suchen eines leeres Feldes
@@ -177,4 +184,7 @@
 		Kennenlernen von git\\
 	\end{frame}
 
+\begin{frame}
+\textbf{	Code und Präsentation auf \url{https://github.com/flowlow969/TheSuperFancySudokuSolver}.}
+\end{frame}
 \end{document}

@@ -5,8 +5,7 @@ pygame.init()
 #Anzeige Parameter
 windowsizex = 560
 windowsizey = 560
-gameBorderYLeft = 100
-gameBorderYRight = 700
+
 win = pygame.display.set_mode((windowsizex,windowsizey))
 #Betriebszustände
 run = True      #Schleife wiederhohlt sich
