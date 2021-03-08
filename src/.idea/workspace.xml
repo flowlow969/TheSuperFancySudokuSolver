@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3cc9ebc9-787d-430d-8d8f-7dd43b348fb8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../präsi/document.aux" beforeDir="false" afterPath="$PROJECT_DIR$/../präsi/document.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../präsi/document.nav" beforeDir="false" afterPath="$PROJECT_DIR$/../präsi/document.nav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../präsi/document.out" beforeDir="false" afterPath="$PROJECT_DIR$/../präsi/document.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../präsi/document.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../präsi/document.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../präsi/document.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../präsi/document.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../präsi/document.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../präsi/document.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../präsi/document.toc" beforeDir="false" afterPath="$PROJECT_DIR$/../präsi/document.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
